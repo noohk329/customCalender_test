@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/colorPrimary"
+    tools:context="com.example.customcalender_test.CalendarViewWithNotesActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay"
+        app:elevation="0dp">
+
+        <android.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="84dp"
+            app:popupTheme="@style/AppTheme.PopupOverlay"
+            app:subtitleTextAppearance="@style/AppTheme.SubTitleText"
+            app:titleTextAppearance="@style/AppTheme.TitleText" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <com.example.calenderviewlib.CalendarView
+        android:id="@+id/calendarView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        app:content_background_color="#fff"
+        app:week_header_background_color="#fff"
+        app:week_header_text_color="?attr/colorPrimary"
+        app:current_day_circle_enable="true"
+        app:month_header_show="false"
+        app:week_header_movable="false" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

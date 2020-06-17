@@ -1,0 +1,3 @@
+rootProject.name='customCalender_test'
+include ':app'
+include ':calenderviewlib'

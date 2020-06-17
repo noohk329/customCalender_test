@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:textAlignment="center">
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollView"
+        android:layout_width="match_parent"
+
+        android:layout_height="675dp"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="39dp" />
+
+            <LinearLayout
+                android:id="@+id/line"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:orientation="horizontal">
+
+                <Space
+                    android:layout_width="127dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+                <View
+                    android:id="@+id/view2"
+                    android:layout_width="63dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/background" />
+
+                <Space
+                    android:layout_width="116dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+            </LinearLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="16dp" />
+
+            <TextView
+                android:id="@+id/showD_title"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:password="false"
+                android:text="다름 아닌 사랑과 자유"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="#4E4E4E"
+                android:textColorHighlight="#FFFFFF"
+                android:typeface="serif" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
+
+            <TextView
+                android:id="@+id/showD_author"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center|center_horizontal"
+                android:text="저자 김하나 "
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="#7E7E7E"
+                android:typeface="serif" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="26dp" />
+
+            <LinearLayout
+                android:id="@+id/diaryWrap"
+                android:layout_width="match_parent"
+                android:layout_height="454dp"
+                android:orientation="horizontal">
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+                <LinearLayout
+                    android:id="@+id/diaryContainer"
+                    android:layout_width="329dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/showD_date"
+                        android:layout_width="match_parent"
+                        android:layout_height="34dp"
+                        android:background="@color/colorPrimaryDark"
+                        android:gravity="center"
+                        android:text="2020-06-15"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        android:textColor="#FDFCFC"
+                        android:textSize="18sp"
+                        android:typeface="serif" />
+
+                    <TextView
+                        android:id="@+id/showD_page"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/background"
+                        android:gravity="center"
+                        android:text="~ 123.p"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        android:textColor="#FDFCFC"
+                        android:textSize="12sp"
+                        android:typeface="serif" />
+
+                    <EditText
+                        android:id="@+id/showD_diarytext"
+                        android:layout_width="match_parent"
+                        android:layout_height="309dp"
+                        android:ems="10"
+                        android:hint="다이어리를 입력해주세요 :)"
+                        android:inputType="textMultiLine"
+                        android:lines="10"
+                        android:singleLine="false"
+                        android:text="긴 줄이 나와야 하는데 얼마나 더 길게 써야할지는 모르겠지만 하여간에 여러 줄이 출력되어야 함. "
+                        android:typeface="serif" />
+
+                    <LinearLayout
+                        android:id="@+id/diaryEditLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/deleteD_btn"
+                            android:layout_width="223dp"
+                            android:layout_height="34dp"
+                            android:layout_weight="1"
+                            android:background="@color/colorPrimaryDark"
+                            android:clickable="true"
+                            android:gravity="center"
+                            android:onClick="deleteOnclick"
+                            android:text="DELETE"
+                            android:textAlignment="center"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                            android:textColor="#FDFCFC"
+                            android:textSize="14sp"
+                            android:typeface="serif" />
+
+                        <TextView
+                            android:id="@+id/saveD_btn"
+                            android:layout_width="226dp"
+                            android:layout_height="34dp"
+                            android:layout_weight="1"
+                            android:background="@color/colorPrimaryDark"
+                            android:clickable="true"
+                            android:gravity="center"
+                            android:onClick="saveOnclick"
+                            android:text="SAVE"
+                            android:textAlignment="center"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                            android:textColor="#FDFCFC"
+                            android:textSize="14sp"
+                            android:typeface="serif" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    "
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

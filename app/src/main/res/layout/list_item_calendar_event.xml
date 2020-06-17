@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:orientation="horizontal"
+    android:paddingTop="14dp"
+    android:paddingBottom="14dp"
+    android:paddingStart="24dp"
+    android:paddingEnd="24dp"
+    android:clickable="true"
+    android:focusable="true"
+    android:background="?android:attr/selectableItemBackground">
+
+    <View
+        android:id="@+id/rcl_calendar_event_icon"
+        android:layout_width="2dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="9dp"
+        android:background="?attr/colorPrimary" />
+
+    <Space
+        android:layout_width="13dp"
+        android:layout_height="0dp" />
+
+    <LinearLayout
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_calendar_book_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:lines="1"
+            android:textColor="#252525"
+            android:textSize="16sp"
+            android:typeface="serif"
+            tools:text="Exercise Plan" />
+
+        <TextView
+            android:id="@+id/tv_readpages"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:lines="1"
+            android:textColor="#979797"
+            android:textSize="13sp"
+            android:typeface="serif"
+            tools:text="읽은 페이지 수" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
+
+        <TextView
+            android:id="@+id/tv_diaryPreview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:text="다이어리 미리보기"
+            android:textColor="@color/background"
+            android:textSize="10sp"
+            android:typeface="serif" />
+
+    </LinearLayout>
+
+</LinearLayout>

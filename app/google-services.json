@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1040241764032",
+    "firebase_url": "https://bookcalendar-631f0.firebaseio.com",
+    "project_id": "bookcalendar-631f0",
+    "storage_bucket": "bookcalendar-631f0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1040241764032:android:1e0c01df2d49920aeb2f25",
+        "android_client_info": {
+          "package_name": "com.example.customcalender_test"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1040241764032-ectdk77797q7ukk8buu1ntou82q6g92a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyApaga_bPh2pbfrVOi12_0s9ffCkx4mrj4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1040241764032-ectdk77797q7ukk8buu1ntou82q6g92a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
