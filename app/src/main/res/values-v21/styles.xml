@@ -8,6 +8,5 @@
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowBackground">@color/background</item>
         <item name="android:windowActivityTransitions">true</item>
-        <item name="android:windowEnterTransition">@transition/filter_enter</item>
     </style>
 </resources>

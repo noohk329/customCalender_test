@@ -4,7 +4,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -18,15 +17,13 @@ import android.widget.Toolbar;
 
 import com.example.calenderviewlib.CalendarView;
 import com.example.customcalender_test.data.Event;
-import com.example.customcalender_test.uihelpers.CalendarDialog;
 
 import java.text.DateFormatSymbols;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
-import java.util.Objects;
-
-import androidx.fragment.app.Fragment;
+import java.util.Locale;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -37,11 +34,8 @@ import com.google.firebase.database.ValueEventListener;
 @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
 public class CalendarViewWithNotesActivity extends AppCompatActivity {
 
-    private final static int CREATE_EVENT_REQUEST_CODE = 100;
-
     private String[] mShortMonths;
     private CalendarView mCalendarView;
-    private CalendarDialog mCalendarDialog;
 
     private List<Event> mEventList = new ArrayList<>();
 
@@ -66,7 +60,7 @@ public class CalendarViewWithNotesActivity extends AppCompatActivity {
             public void run() {
                 initializeUI();
             }
-        }, 3000);
+        }, 300);
 
     }
 
@@ -104,11 +98,18 @@ public class CalendarViewWithNotesActivity extends AppCompatActivity {
 
                         }
 
+                        int getcolor;
+                        try{
+                            getcolor = Integer.parseInt(color);
+                        }catch (NumberFormatException e){
+                            getcolor = 0;
+                        }
+
                         Event mGetEvent = new Event(
                                 id,
                                 title,
                                 cal,
-                                Integer.parseInt(color),
+                                getcolor,
                                 isDiary,
                                 diaryText,
                                 readPage
@@ -117,11 +118,8 @@ public class CalendarViewWithNotesActivity extends AppCompatActivity {
                         mEventList.add(mGetEvent);
 
                     }
-
                 }
-
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
@@ -149,8 +147,13 @@ public class CalendarViewWithNotesActivity extends AppCompatActivity {
         // 날짜 클릭 시 dialog
         mCalendarView.setOnItemClickedListener((calendarObjects, previousDate, selectedDate) -> {
             if (calendarObjects.size() != 0) {
-                mCalendarDialog.setSelectedDate(selectedDate);
-                mCalendarDialog.show();
+
+                Intent intent = new Intent(this, DiaryListActivity.class);
+
+                String date = new SimpleDateFormat("YYYY-MM-dd", Locale.getDefault()).format(selectedDate.getTime());
+                intent.putExtra("selectdate", date);
+                startActivity(intent);
+
             }
         });
 
@@ -165,25 +168,11 @@ public class CalendarViewWithNotesActivity extends AppCompatActivity {
             getActionBar().setSubtitle(Integer.toString(year));
         }
 
-        mCalendarDialog = CalendarDialog.Builder.instance(this)
-                .setEventList(mEventList)
-                .setOnItemClickListener(event -> onEventSelected(event))
-                .create();
-    }
-
-
-    private void onEventSelected(Event event) { // calender dialog 에서 이벤트 선택시.
-        Activity context = CalendarViewWithNotesActivity.this;
-        Intent intent = CreateEventActivity.makeIntent(context, event);
-
-        startActivityForResult(intent, CREATE_EVENT_REQUEST_CODE);
-        overridePendingTransition( R.anim.slide_in_up, R.anim.stay );
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.getMenuInflater().inflate(R.menu.menu_toolbar_calendar_view, menu);
-
         return true;
     }
 
@@ -196,62 +185,6 @@ public class CalendarViewWithNotesActivity extends AppCompatActivity {
             }
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    // 각 코드 별 행동 여기서 지정하기!!
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == CREATE_EVENT_REQUEST_CODE) {
-            if (resultCode == RESULT_OK) {
-                int action = CreateEventActivity.extractActionFromIntent(data);
-                Event event = CreateEventActivity.extractEventFromIntent(data);
-
-                switch (action) {
-                    case CreateEventActivity.ACTION_CREATE: {
-                        mEventList.add(event);
-                        mCalendarView.addCalendarObject(parseCalendarObject(event));
-                        mCalendarDialog.setEventList(mEventList);
-                        break;
-                    }
-                    case CreateEventActivity.ACTION_EDIT: {
-                        Event oldEvent = null;
-                        for (Event e : mEventList) {
-                            if (Objects.equals(event.getID(), e.getID())) {
-                                oldEvent = e;
-                                break;
-                            }
-                        }
-                        if (oldEvent != null) {
-                            mEventList.remove(oldEvent);
-                            mEventList.add(event);
-
-                            mCalendarView.removeCalendarObjectByID(parseCalendarObject(oldEvent));
-                            mCalendarView.addCalendarObject(parseCalendarObject(event));
-                            mCalendarDialog.setEventList(mEventList);
-                        }
-                        break;
-                    }
-                    case CreateEventActivity.ACTION_DELETE: {
-                        Event oldEvent = null;
-                        for (Event e : mEventList) {
-                            if (Objects.equals(event.getID(), e.getID())) {
-                                oldEvent = e;
-                                break;
-                            }
-                        }
-                        if (oldEvent != null) {
-                            mEventList.remove(oldEvent);
-                            mCalendarView.removeCalendarObjectByID(parseCalendarObject(oldEvent));
-
-                            mCalendarDialog.setEventList(mEventList);
-                        }
-                        break;
-                    }
-                }
-            }
-            return;
-        }
-        super.onActivityResult(requestCode, resultCode, data);
     }
 
     private static CalendarView.CalendarObject parseCalendarObject(Event event) {

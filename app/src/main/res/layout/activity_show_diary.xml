@@ -96,7 +96,7 @@
                 <LinearLayout
                     android:id="@+id/diaryContainer"
                     android:layout_width="329dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="418dp"
                     android:layout_weight="1"
                     android:orientation="vertical">
 
@@ -129,7 +129,7 @@
                     <EditText
                         android:id="@+id/showD_diarytext"
                         android:layout_width="match_parent"
-                        android:layout_height="309dp"
+                        android:layout_height="280dp"
                         android:ems="10"
                         android:hint="다이어리를 입력해주세요 :)"
                         android:inputType="textMultiLine"

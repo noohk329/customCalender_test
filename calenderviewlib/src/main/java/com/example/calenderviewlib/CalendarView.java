@@ -556,7 +556,7 @@ public class CalendarView extends FrameLayout {
                                 View view) {
 
             FrameLinearLayout container = (FrameLinearLayout) view;
-            SelectedTextView tvDay = view.findViewById(R.id.tv_calendar_day);
+            SelectedTextView tvDay = view.findViewById(R.id.listD_date);
             MultipleTriangleView vNotes = view.findViewById(R.id.v_notes);
 
             // Set Notes

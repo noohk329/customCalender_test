@@ -12,7 +12,7 @@
     android:layout_gravity="center">
 
     <com.example.calenderviewlib.helpers.SelectedTextView
-        android:id="@+id/tv_calendar_day"
+        android:id="@+id/listD_date"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:gravity="center"

@@ -3,9 +3,10 @@ package com.example.customcalender_test.data;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.io.Serializable;
 import java.util.Calendar;
 
-public class Event implements Parcelable {
+public class Event implements Parcelable, Serializable {
 
     private String mID;
     private String mTitle;

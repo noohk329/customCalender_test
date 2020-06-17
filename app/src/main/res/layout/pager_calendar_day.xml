@@ -15,7 +15,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/tv_calendar_day"
+            android:id="@+id/listD_date"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -28,7 +28,7 @@
             tools:text="1"/>
 
         <TextView
-            android:id="@+id/tv_calendar_day_of_week"
+            android:id="@+id/listD_day"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
@@ -79,7 +79,7 @@
 
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_calendar_events"
+                android:id="@+id/calendar_events"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"/>
 
